@@ -1,0 +1,84 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath}
+
+\title{Green's function}
+\author{Aman Anand}
+\date{September 2023}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+The Hamiltonian is given as $H = H_0 + V$ and it follows
+$H |\psi\rangle = i\hbar \frac{\partial \psi}{\partial t}$
+\begin{enumerate}
+    \item \textbf{Schrodinger:}  This is the normal Schrodinger equation, and here, wavefunction evolves in time, and operators are not time-dependent.
+    \begin{equation}
+        \psi_S(t) = e^{-iHt} \psi(0) 
+    \end{equation}
+    \item \textbf{Heisenberg:} Here, the wavefunction is time-independent, but the operators vary with time as below:
+    \begin{equation}
+        \psi_H(t) = e^{iHt} \psi_S(t) = \psi_S(0)
+    \end{equation}
+    \begin{equation}
+        A_H(t) = e^{iHt}A_S \;e^{-iHt}
+    \end{equation}
+    \begin{equation}
+        \implies i \frac{dA_H(t)}{dt} = [A_H(t), H]
+    \end{equation}
+    \item \textbf{Interaction:} Here, both the wavefunction and operators vary with time as follows:
+    \begin{equation}
+        \psi_I(t) = e^{iH_0t} \psi_S(t) = e^{iH_0t} e^{-iHt} \psi_S(0)
+    \end{equation}
+    \begin{equation}
+        A_I(t) = e^{iH_0t}A_S \;e^{-iH_0t}
+    \end{equation}
+    \begin{equation}
+        \implies  i \frac{dA_I(t)}{dt} = [A_I(t), H_0]
+    \end{equation}
+\end{enumerate}
+
+Unitary evolution as, $\psi_I(t) = U(t) \psi_I(0)$.\\
+\begin{equation}
+    \frac{\partial U(t)}{\partial t} = -iV(t) U(t)
+\end{equation}
+\begin{equation}
+\begin{split}
+     \implies U(t) &= 1-i\int_0^t dt_1 V(t_1) +(-i)^2 \int_0^t dt_1 \int_0^{t_1} dt_2 V(t_1)  V(t_2)+... \\&= \sum_{n=0}^{\infty} (-i)^n \int_0^{t}dt_1\int_0^{t_1}dt_2 \; ... \int_0^{t_n}dt_n V(t_1)  V(t_2)... V(t_n) \\
+     &= 1-i\int_0^t dt_1 V(t_1) +\frac{(-i)^2}{2!} \int_0^t dt_1 \int_0^{t} dt_2 \; T[V(t_1)  V(t_2)]+... \\&=1 + \sum_{n=1}^{\infty} \frac{(-i)^n}{n!} \int_0^{t}dt_1\int_0^{t}dt_2 \; ... \int_0^{t}dt_n \; T[V(t_1)  V(t_2)... V(t_n)] \\ &\equiv T\exp \bigg[-i\int_0^t dt_1\; V(t_1)\bigg]
+\end{split}
+\end{equation}
+Note: In the above equations, V(t) is in the interaction picture operator ($V_I(t)$).\\
+S-matrix operator is defined as,  $\psi_I(t) = S(t,t') \psi_I(t')$. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
+ 
