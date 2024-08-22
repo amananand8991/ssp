@@ -1,0 +1,52 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath}
+
+\title{Paramagnetism and Diamagnetism}
+\author{Aman Anand}
+\date{August 2024}
+
+\begin{document}
+	
+	\maketitle
+	
+	\section{Introduction}
+	
+	
+	
+	\section{Pauli Paramagnetism}
+	First note energy of up spins(+) (it's up wrt to the $S_z$ component along +z-direction) and down spins(-) are given as $\varepsilon_{\pm} = \mp \mu_s B$, with $\mu_s = g_s \mu_B m_s $ (where $\mu_B = e\hbar/2mc$ is the Bohr magneton). Each electron contributes to $\pm \mu_B/V$ (depending on if its in the direction or opposite direction of H). This makes our magnetization density as
+	\begin{equation}
+		M = -\mu_B (n_+ - n_-)
+	\end{equation}
+	Since the magnetic field splits the degenerate energy levels into two. If the DOS when B = 0, is $g(\varepsilon)$. Then DOS for the up and down spins will be $g_{\pm} (\varepsilon) = g(\varepsilon \mp \mu_B H)/2$. So, we get
+	\begin{equation}
+		n_{\pm} = \int d\varepsilon g_{\pm}(\varepsilon)f(\varepsilon)
+	\end{equation}                        
+	and the chemical potential is fixed by
+	\begin{equation}
+		n = n_+ +n_- .
+	\end{equation}
+	Since, the energy $\varepsilon_{\pm}$ is very small wrt $\varepsilon_F$. We can hence expand the DOS as
+	\begin{equation}
+		g_{\pm} (\varepsilon) = \frac{1}{2} g(\varepsilon \mp \mu_B H) = \frac{1}{2} g(\varepsilon) \mp \mu_B H g'(\varepsilon).
+	\end{equation}
+	Hence, when we plug this we get the same relation for chemical potential as without the magnetic field. Hence, we use the same $\mu$ as for metals. Our magnetization density now becomes
+	\begin{equation}
+		M = \mu_B ^2 H \int g'(\varepsilon) f(\varepsilon) d\varepsilon .
+	\end{equation}
+	Doing integration by parts and taking $f'(\varepsilon) = \delta(\varepsilon-\varepsilon_F)$, gives
+	
+	\begin{equation}
+		M = \mu_B ^2 H g(\varepsilon_F).
+	\end{equation}
+	So, our susceptibility becomes independent of temperature
+	\begin{equation}
+		\chi = \frac{\partial M}{\partial H} = \mu_B ^2 g(\varepsilon_F).
+	\end{equation}
+	
+	
+	
+	
+	
+\end{document}
