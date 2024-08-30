@@ -1,7 +1,7 @@
 \documentclass{article}
 \usepackage{graphicx} % Required for inserting images
 \usepackage{amsmath}
-
+%\usepackage[a4paper, total={7in, 8in}]{geometry}
 \title{Paramagnetism and Diamagnetism}
 \author{Aman Anand}
 \date{August 2024}
@@ -11,9 +11,56 @@
 	\maketitle
 	
 	\section{Introduction}
-	
-	
-	
+	\textbf{Q.} What is magnetization, and how to measure/calculate it? \\
+	\begin{equation}
+	M(H,T) = \frac{\sum_n M_n (H) e^{-E_n/k_BT}}{\sum_ne^{-E_n/k_BT}}, \quad M_n(H) = -\frac{1}{V}\frac{\partial E_n(H)}{\partial H}.
+	\end{equation}
+	The above expression at $T = 0$, is just $M(H,0) = M_0 (H)$.
+	With this we can write the magnetization in terms of free energy as
+	\begin{equation}
+	M(H) = -\frac{1}{V}\frac{\partial F}{\partial H}, \quad e^{-F/k_BT} = \sum_ne^{-E_n/k_BT}.
+	\end{equation}
+	The susceptibility can now be written in terms of free energy.
+	\begin{equation}
+	\implies \chi = \frac{\partial M}{\partial H} = -\frac{1}{V}\frac{\partial^2 F}{\partial H^2}
+	\end{equation}
+	To measure the magnetisation we can use a very slowly spatially varying field and measure the force exerted on the specimen. The force per unit volume is given as
+	\begin{equation}
+	f = -\frac{1}{V}\frac{\partial F}{\partial x} = -\frac{1}{V}\frac{\partial F}{\partial H} \frac{\partial H}{\partial x} = M \frac{\partial H}{\partial x} 
+	\end{equation}
+\\\\
+	To understand the magnetism effect of solids, we can take in easy models like ionic solids where electrons are not frely moving and instead we have a collection of atoms/molecules/ions of which each of them contributes to the magnetization. The Hamiltonian of these atoms in presence of magnetic field gets additional terms as shown for $\Delta H$
+\begin{equation}
+\Delta H = \mu_B (\mathbf{L}+ g_0 \mathbf{S})\mathbf{ \cdot} \mathbf{H} + \frac{e^2}{8mc^2} H^2 \sum_i (x_i ^2 + y_i ^2).
+\end{equation}
+Because of this additional terms which we treat as perturbation (as they are much smaller energy scales compared to atomic excitation energies), the energy gets modified and we write the modified energy using perturbation theory only till second-order (as we need to take second order derivative wrt H to find the susceptibility)
+\begin{equation}
+E_n \to E_n + \Delta E_n; \quad \Delta E_n = \langle n | \Delta H |n\rangle + \sum_{n' \neq n} \frac{| \langle n | \Delta H |n' \rangle |^2}{E_n - E_{n'}}
+\end{equation}
+\begin{equation}\label{Main energy perturbation formula}
+\implies  \Delta E_n =\mu_B \mathbf{H}\mathbf{ \cdot} \langle n | \mathbf{L}+ g_0 \mathbf{S} |n\rangle + \sum_{n' \neq n} \frac{| \langle n | \mu_B (\mathbf{L}+ g_0 \mathbf{S})\mathbf{ \cdot} \mathbf{H}|n' \rangle |^2}{E_n - E_{n'}}+ \frac{e^2}{8mc^2} H^2 \langle n |  \sum_i (x_i ^2 + y_i ^2). |n\rangle
+\end{equation}
+
+\section{Larmor Diamagnetism}
+If all electronic shells are filled, then the ion has zero spin and angular momentum (because closed-shell ion is spherically symmetric) in the ground state $|0\rangle$, so only the last term of Eqn. (\ref{Main energy perturbation formula}) contributes as
+\begin{equation}
+\implies  \Delta E_0 = \frac{e^2}{8mc^2} H^2 \langle 0 |  \sum_i (x_i ^2 + y_i ^2) |0\rangle =  \frac{e^2}{12mc^2} H^2 \langle 0 |  \sum_i r_i ^2 |0\rangle.
+\end{equation}
+Note, that in the above equation I replaced $(x_i ^2 + y_i ^2)$ by $\frac{2}{3} r_i ^2 $ which also follows from spherical symmetry. At low temperatures we can find the susceptibility (note the factor of N comes from number of atoms) as
+\begin{equation}
+\chi =  -\frac{N}{V}\frac{\partial^2 \Delta E_0 }{\partial H^2}=   -\frac{e^2}{6mc^2} \frac{N}{V} H^2 \langle 0 |  \sum_i r_i ^2 |0\rangle
+\end{equation}
+which as $\chi$ is negative is diamagnetic. This equation will describe magnetic response of full shelled solids  like solid noble gases and ionic crystals of alkali halides. For the alkali halides we can find the susceptibility for positive and negative ions and add them according to their proportion. Susceptibilities are usually quoted as molar susceptibilities, defined as
+\begin{equation}
+\chi^{\mathrm{molar}} = \frac{N_A}{(N/V)} \chi = -Z_i N_A \frac{e^2}{6mc^2} \langle r^2 \rangle, \quad \langle r\rangle = \frac{1}{Z_i} \sum_i \langle 0 |   r_i ^2 |0\rangle,
+\end{equation}
+where $N_A$ is the Avogadro number, $Z_i$ is the number of electrons in the ion, and $\langle r^2 \rangle$ is the mean square ionic radius as defined above. See Ashcroft Mermin (Pg. 649) for a table of molar susceptibilities of noble gas atoms and alkali halide ions.
+
+
+
+
+
+
 	\section{Pauli Paramagnetism}
 	First note energy of up spins(+) (it's up wrt to the $S_z$ component along +z-direction) and down spins(-) are given as $\varepsilon_{\pm} = \mp \mu_s B$, with $\mu_s = g_s \mu_B m_s $ (where $\mu_B = e\hbar/2mc$ is the Bohr magneton). Each electron contributes to $\pm \mu_B/V$ (depending on if its in the direction or opposite direction of H). This makes our magnetization density as
 	\begin{equation}
