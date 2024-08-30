@@ -11,7 +11,9 @@
 	\maketitle
 	
 	\section{Introduction}
-	Take1 a lattice with point group symmetry operations \{G\} leaving it invariant. The group elements are $3 \times 3$ unitary matrices. Unlike Bloch translation symmetry which simplifies our problem significantly, these point group symmetries can reduce computations by a factor of 3 or 24. Major significance is in getting the selection rules, as in which transitions are allowed in presence of external potentials (which can cause transition between electron states). 
+	Take a lattice with point group symmetry operations \{G\} leaving it invariant. The group elements are $3 \times 3$ unitary matrices. Unlike Bloch translation symmetry which simplifies our problem significantly, these point group symmetries can reduce computations by a factor of 3 or 24. Major significance is in getting the selection rules, as in which transitions are allowed in presence of external potentials (which can cause transition between electron states). Another advantage of symmetry is knowing the points in \textit{k-space} where the energies are degenerate.
+	
+	How I plan to write these notes is such that I describe first all the mathematical tools required, then describe the point group symmetries and how there are 32 point groups, 14 Bravais lattice and 230 space groups. Later, I show with examples how this crystal and symmetry information comes handy in knowing our objects of interest.
 	
 	\section{Mathematics Preliminary}
 	What we want to study is how functions (can be wavefunctions) transform under action of the group, i.e.,
@@ -19,12 +21,12 @@
 		\psi_i (G\mathbf{r}) = \sum_j A(G)_{ij} \psi_j (\mathbf{r}) .
 	\end{equation}
 
-	This way we can find the matrices A(G). The set of matrices \{A\} is called a \textbf{representation of the group}. The matrices A and the group elements can all be taken to be unitary $(A^\dagger = A^{-1}$ and $G^\dagger = G^{-1})$. \\
+	This way we can find the matrices A(G). The set of matrices \{A\} is called a \textbf{representation of the group}. The matrices A and the group elements can all be taken to be unitary $(A^\dagger = A^{-1}$ and $G^\dagger = G^{-1})$. \textbf{How??} \\
 	Two representations $\{A^{(n)}\}$ and $\{A^{(m)}\}$ are \textbf{equivalent} if there exists a single matrix N such that the below holds for all elements of the group.
 	\begin{equation}
 		N^{-1} A^{(n)} (G) N =  A^{(m)}(G)
 	\end{equation} 
-	Also, if we can decompose all matrices of our representation in some basis to Block diagonal form, then our representation is called \textbf{reducible}. To derive the main results like the great orthogonality theorem, we consider a matrix M, which is defined by a matrix X (choice of X could be arbitrary)
+	It makes sense to take equivalent representations as one otherwise by a change of basis we can get infinitely many representations. Also, if we can decompose all matrices of our representation in some basis to Block diagonal form, then our representation is called \textbf{reducible}. To derive the main results like the great orthogonality theorem, we consider a matrix M, which is defined by a matrix X (choice of X could be arbitrary)
 	\begin{equation}\label{Eqn:define-M}
 		M = \sum_G  A^{(m)}(G) X  A^{(n)}(G^\dagger).
 	\end{equation}
