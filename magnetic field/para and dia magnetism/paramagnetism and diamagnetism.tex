@@ -29,13 +29,13 @@
 	f = -\frac{1}{V}\frac{\partial F}{\partial x} = -\frac{1}{V}\frac{\partial F}{\partial H} \frac{\partial H}{\partial x} = M \frac{\partial H}{\partial x} 
 	\end{equation}
 \\\\
-	To understand the magnetism effect of solids, we can take in easy models like ionic solids where electrons are not frely moving and instead we have a collection of atoms/molecules/ions of which each of them contributes to the magnetization. The Hamiltonian of these atoms in presence of magnetic field gets additional terms as shown for $\Delta H$
+	To understand the magnetism effect of solids, we can take in easy models (like ionic solids) where electrons are not freely moving and instead we have a collection of atoms/molecules/ions,of which each of them contributes to the magnetization (like atomic magnetization). The Hamiltonian of these atoms in presence of magnetic field gets additional terms, shown as $\Delta \mathcal{H}$
 \begin{equation}
-\Delta H = \mu_B (\mathbf{L}+ g_0 \mathbf{S})\mathbf{ \cdot} \mathbf{H} + \frac{e^2}{8mc^2} H^2 \sum_i (x_i ^2 + y_i ^2).
+\Delta \mathcal{H} = \mu_B (\mathbf{L}+ g_0 \mathbf{S})\mathbf{ \cdot} \mathbf{H} + \frac{e^2}{8mc^2} H^2 \sum_i (x_i ^2 + y_i ^2).
 \end{equation}
 Because of this additional terms which we treat as perturbation (as they are much smaller energy scales compared to atomic excitation energies), the energy gets modified and we write the modified energy using perturbation theory only till second-order (as we need to take second order derivative wrt H to find the susceptibility)
 \begin{equation}
-E_n \to E_n + \Delta E_n; \quad \Delta E_n = \langle n | \Delta H |n\rangle + \sum_{n' \neq n} \frac{| \langle n | \Delta H |n' \rangle |^2}{E_n - E_{n'}}
+E_n \to E_n + \Delta E_n; \quad \Delta E_n = \langle n | \Delta \mathcal{H} |n\rangle + \sum_{n' \neq n} \frac{| \langle n | \Delta \mathcal{H} |n' \rangle |^2}{E_n - E_{n'}}
 \end{equation}
 \begin{equation}\label{Main energy perturbation formula}
 \implies  \Delta E_n =\mu_B \mathbf{H}\mathbf{ \cdot} \langle n | \mathbf{L}+ g_0 \mathbf{S} |n\rangle + \sum_{n' \neq n} \frac{| \langle n | \mu_B (\mathbf{L}+ g_0 \mathbf{S})\mathbf{ \cdot} \mathbf{H}|n' \rangle |^2}{E_n - E_{n'}}+ \frac{e^2}{8mc^2} H^2 \langle n |  \sum_i (x_i ^2 + y_i ^2). |n\rangle
