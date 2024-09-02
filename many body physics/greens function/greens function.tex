@@ -44,6 +44,7 @@ Unitary evolution as, $\psi_I(t) = U(t) \psi_I(0)$.\\
 \begin{equation}
     \frac{\partial U(t)}{\partial t} = -iV(t) U(t)
 \end{equation}
+where the $V(t) \equiv V_I (t)$, is in the interaction picture. 
 \begin{equation}
 \begin{split}
      \implies U(t) &= 1-i\int_0^t dt_1 V(t_1) +(-i)^2 \int_0^t dt_1 \int_0^{t_1} dt_2 V(t_1)  V(t_2)+... \\&= \sum_{n=0}^{\infty} (-i)^n \int_0^{t}dt_1\int_0^{t_1}dt_2 \; ... \int_0^{t_n}dt_n V(t_1)  V(t_2)... V(t_n) \\
@@ -51,19 +52,65 @@ Unitary evolution as, $\psi_I(t) = U(t) \psi_I(0)$.\\
 \end{split}
 \end{equation}
 Note: In the above equations, V(t) is in the interaction picture operator ($V_I(t)$).\\
-S-matrix operator is defined as,  $\psi_I(t) = S(t,t') \psi_I(t')$. 
+S-matrix operator is defined as,  $\psi_I(t) = S(t,t') \psi_I(t')$. Then the S-matrix is given as
+\begin{equation}
+	S(t,t') = T\exp \bigg[-i\int_{t'}^t dt_1\; V(t_1)\bigg]
+\end{equation}
 
+\subsection{Example}
+\textbf{Q.} Consider a particle in ground state (at time $t'$) of a harmonic oscillator, now add a time dependent force on it and then see what is the probability for it to be in ground state (at time $t$)? (Coleman MBP 2015)\\
+\begin{equation}
+	H_0(t) = \hbar \omega \bigg( b^\dagger (t) b(t) + \frac{1}{2} \bigg), \quad V_I(t) = b^\dagger (t) \bar{z}(t) + b(t) z(t)
+\end{equation}
+where the time dependent operators in Heisenberg notation are $b(t) = b e^{-i\omega t}$ and $b^\dagger(t) = b^\dagger e^{i\omega t}$. Then the quantity of interest that we need to calculate is
+\begin{equation}
+	  \langle 0 | S(t,t') | 0 \rangle = \langle 0 | T\exp \bigg[-i\int_{t'}^t dt_1\; V(t_1)\bigg] | 0 \rangle
+\end{equation}
 
+\begin{equation}
+	S_N = e^{-i V(t_N)\Delta t_N}e^{-i V(t_{N-1})\Delta t_{N-1}} \cdots  e^{-i V(t_1)\Delta t_1} = \prod_{j=1}^N e^{-i V(t_{j})\Delta t_{j}}
+\end{equation}
+Define the quantities 
+\begin{equation}
+	A_r =  b(t_r) z(t_r), \quad 	A_r ^\dagger =  b^\dagger (t_r) \bar{z}(t_r).
+\end{equation}
 
+We bring all annihilation operator to the right and creation ones to the left, with the use of below commutators
+\begin{equation}
+	[A_i, A_j] = [A^\dagger_i, A^\dagger_j] = 0, \quad [A_i, A^\dagger _j] = z(t_i)\bar{z}(t_j) e^{-i\omega (t_i - t_j)}.
+\end{equation}
+Now, $e^{-i V(t_{j})\Delta t_{j}} = e^{-iA_j \Delta t_{j}-iA^\dagger_j \Delta t_{j} }$ and we use the BCH identities
+\begin{equation}
+	e^{\hat{\alpha}+\hat{\beta}} = e^{\hat{\alpha}}e^{\hat{\beta}}e^{-\frac{1}{2}[\hat{\alpha},\hat{\beta}]}, \quad  e^{\hat{\alpha}}e^{\hat{\beta}} = e^{\hat{\beta}}e^{\hat{\alpha}}e^{[\hat{\alpha},\hat{\beta}]}.
+\end{equation}
+when the commutator of $\hat{\alpha}$ and $\hat{\beta}$ is a c-number.
+\begin{equation}
+	\implies e^{-iA_j \Delta t_{j}-iA^\dagger_j \Delta t_{j} } =e^{-iA^\dagger_j \Delta t_{j} }  e^{-iA_j \Delta t_{j}}e^{-\frac{1}{2}\Delta t_j ^2 z(t_j)\bar{z}(t_j)}
+\end{equation}
 
-
-
-
-
-
-
-
-
+\begin{equation}
+	\implies  e^{-iA_i \Delta t_{i}} e^{-iA^\dagger_j \Delta t_{j} } = e^{-iA^\dagger_j \Delta t_{j} }e^{-iA_i \Delta t_{i}} e^{-[A_i, A^\dagger _j]\Delta t_i \Delta t_j}
+\end{equation}
+Hence, we can write our $S_N$ as
+\begin{equation}
+	S_N = e^{-i\sum_r A^\dagger _r \Delta t_r}e^{-i\sum_r A_r \Delta t_r} \mathrm{exp} \bigg[ -\sum _{i \geq j} [A_i, A^\dagger _j] (1-\frac{1}{2}\delta_{ij}) \Delta t_i \Delta t_j \bigg]
+\end{equation}
+Taking all time intervals to be equal $(\Delta t_i = \Delta \tau)$ and in the limit of $\Delta \tau \to 0$,
+ \begin{equation}
+ 	 \langle 0 | S(t,t') | 0 \rangle =  \lim_{\Delta \tau \to 0}S_N = \lim_{\Delta \tau \to 0} \langle 0 | e^{-i\sum_r A^\dagger _r \Delta \tau}e^{-i\sum_r A_r \Delta \tau} | 0 \rangle \mathrm{exp} \bigg[ -\sum _{i \geq j} [A_i, A^\dagger _j] (1-\frac{1}{2}\delta_{ij}) \Delta \tau ^2 \bigg]
+ \end{equation}
+Note that the first part of the product becomes one, as all annihilation operators are on right and creation on left.
+\begin{equation}
+	\begin{split}
+			\implies  \langle 0 | S(t,t') | 0 \rangle &= \lim_{\Delta \tau \to 0} \mathrm{exp} \bigg[ -\sum _{i \geq j} z(t_i)\bar{z}(t_j) e^{-i\omega (t_i - t_j)}(1-\frac{1}{2}\delta_{ij})\Delta \tau ^2 \bigg]\\
+			&= \mathrm{exp} \bigg[ -\int_{t'}^t d\tau' d\tau \; \bar{z}(\tau)\theta (\tau'-\tau) e^{-i\omega (\tau' - \tau)}z(\tau') \bigg]\\
+			&=  \mathrm{exp} \bigg[ -i\int_{t'}^t d\tau' d\tau \; \bar{z}(\tau) G (\tau - \tau')z(\tau') \bigg]
+	\end{split}
+\end{equation}
+Note, that we ignored the term $\delta_{ij}$ as it didn't contribute to the double integration significantly. Thus, our one-particle Green's function is given as
+\begin{equation}
+	G (\tau - \tau') = -i \theta (\tau'-\tau) e^{-i\omega (\tau' - \tau)}.
+\end{equation}
 
 
 
