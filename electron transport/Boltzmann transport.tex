@@ -1,0 +1,119 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath}
+
+\title{Boltzmann Transport Equation}
+\author{Aman Anand}
+\date{September 2023}
+
+\begin{document}
+	
+	\maketitle
+	
+\section{Boltzmann Equation}\label{App:Boltzmann}
+The general Boltzmann transport equation (BTE) is given as
+\begin{eqnarray}
+	\frac{\partial f}{\partial t}+ {\bf v}({\bf k}) \cdot \nabla_{\bf r}f+\frac{1}{\hbar}{\bf F}_{ext} \cdot \nabla_{\bf k}f = \left( \frac{\partial f}{\partial t}\right)_{coll}.
+\end{eqnarray}
+The bulk-bulk scattering collision integral is given as
+
+\begin{equation}
+	\left(\frac{\partial f}{\partial t}\right)_{coll} = \mathcal{I}_{\mathbf{k}}^{(bb)} = \int \frac{d\mathbf{k'}}{(2\pi)^3} \{W_{\mathbf{k},\mathbf{k'}}^{(bb)}f_{\mathbf{k'}}(1-f_{\mathbf{k}})-W_{\mathbf{k'},\mathbf{k}}^{(bb)}f_{\mathbf{k}}(1-f_{\mathbf{k'}}) \}
+\end{equation}
+where $W_{\mathbf{k},\mathbf{k'}}^{(bb)}$ is the bulk-bulk transition rate which we calculate according to  Fermi's Golden rule. $f(\mathbf{r}, \mathbf{k},t)$ is the distribution function, i.e., the probability that state (wavepacket- made superposition of Bloch eigenstates; semiclassically)  $\mathbf{k}$ is occupied at time $t$ near $\mathbf{r}$; under no external fields it is the Fermi-Dirac distribution ($f(\mathbf{r}, \mathbf{k},t) = f_{\mathbf{k}} ^0$). Below we solve the BTE by linearizing it and finding conductivity tensor formula.
+\section{Linearized BTE: Finding conductivity tensor}
+The Boltzmann equation under only external electric field (weak and constant) $\mathbf{E}$ becomes
+\begin{equation}
+	-e\mathbf{E} \cdot \partial_{\mathbf{k}} f_{\mathbf{k}} = \mathcal{I}_{\mathbf{k}}^{(bb)}.
+\end{equation}
+In the quasi-elastic approximation with linearized distribution function $(f_{\mathbf{k}} = f_{\mathbf{k}}^0 - \varphi_{\mathbf{k}} \frac{\partial f_{\mathbf{k}}^0 (\varepsilon_\mathbf{k})}{\partial \varepsilon_\mathbf{k}} )$ the  BTE becomes
+\begin{equation}
+	e \frac{\partial f_{\mathbf{k}}^0}{\partial \varepsilon_\mathbf{k}} \big[ \mathbf{E} \cdot \mathbf{v}(\mathbf{k}) \big] = \left(\frac{\partial f}{\partial t}\right)_{coll}
+\end{equation}
+\begin{equation}
+ \implies	-e\mathbf{E} \cdot \mathbf{v}(\mathbf{k}) = \mathcal{J}_{\mathbf{k}}^{(bb)}.
+\end{equation}
+where $\mathcal{J}_{\mathbf{k}}^{(bb)}$ is given as
+\begin{equation}
+	\mathcal{J}_{\mathbf{k}}^{(bb)} = \int \frac{d\mathbf{k'}}{(2\pi)^3} \mathcal{W}_{\mathbf{k'},\mathbf{k}}^{(bb)} (\varphi_{\mathbf{k'}}^{(b)}-\varphi_{\mathbf{k}}^{(b)})
+\end{equation}
+and the $\mathcal{W}_{\mathbf{k'},\mathbf{k}}^{(bb)}$ is obtained for different problems differently. For example it takes the form of Eqn. (\ref{Eqn:e-ph-scattering-stylishW}) for e-ph scattering. Incase of a elastic impurity scattering, we use $W_{\mathbf{k},\mathbf{k'}}^{(bb)} = W_{\mathbf{k'},\mathbf{k}}^{(bb)}$, which simplifies the collision integral written in lowest order of $\varphi_{\mathbf{k}}$ as
+\begin{equation}
+	\left(\frac{\partial f}{\partial t}\right)_{coll} =  \int \frac{d\mathbf{k'}}{(2\pi)^3} W_{\mathbf{k},\mathbf{k'}}^{(bb)}(f_{\mathbf{k'}} - f_{\mathbf{k}})  = - \int \frac{d\mathbf{k'}}{(2\pi)^3} \frac{\partial f^0}{\partial \varepsilon} W_{\mathbf{k},\mathbf{k'}}^{(bb)}(f_{\mathbf{k'}} - f_{\mathbf{k}}) 
+\end{equation}
+implying $\mathcal{W}_{\mathbf{k'},\mathbf{k}}^{(bb)} = W_{\mathbf{k},\mathbf{k'}}^{(bb)}$. Taking the ansatz
+\begin{equation}
+	\varphi_{\mathbf{k}}^{(b)} = (\mathbf{E} \cdot \hat{k}) \Lambda(\varepsilon_{\mathbf{k}})
+\end{equation}\begin{align}
+	\implies &-e\mathbf{E} \cdot \mathbf{v}(\mathbf{k}) = \int \frac{d\mathbf{k'}}{(2\pi)^3} \mathcal{W}_{\mathbf{k'},\mathbf{k}}^{(bb)} (\varphi_{\mathbf{k'}}^{(b)}-\varphi_{\mathbf{k}}^{(b)})\\
+	&e\mathbf{E} \cdot \mathbf{v}(\mathbf{k}) = \Lambda(\varepsilon_{\mathbf{k}}) \mathbf{E} \cdot [\int \frac{d\mathbf{k'}}{(2\pi)^3} \mathcal{W}_{\mathbf{k'},\mathbf{k}}^{(bb)} (\hat{k} - \hat{k'})]
+\end{align}
+If scattering is azimuthally symmetric around \textbf{k}, then
+\begin{align*}
+	e\mathbf{E} \cdot \mathbf{v}(\mathbf{k}) &= \Lambda(\varepsilon_{\mathbf{k}}) (\mathbf{E} \cdot \hat{k}) \underbrace{\int \frac{d\mathbf{k'}}{(2\pi)^3} \mathcal{W}_{\mathbf{k'},\mathbf{k}}^{(bb)} (1 - \hat{k'} \cdot \hat{k}  )}_{1/\tau(\mathbf{k})}\\
+	&= \frac{\Lambda(\varepsilon_{\mathbf{k}}) (\mathbf{E} \cdot \hat{k}) }{\tau(\mathbf{k})} = \frac{\varphi_{\mathbf{k}}^{(b)}}{\tau(\mathbf{k})}
+\end{align*}
+\begin{equation}
+	\implies \varphi_{\mathbf{k}}^{(b)} = e(\mathbf{E} \cdot \mathbf{v}(\mathbf{k}))\tau(\mathbf{k})
+\end{equation}
+The current density is given as 
+\begin{equation}
+	\mathbf{J} = 2e \int \frac{d\mathbf{k}}{(2\pi)^3} \mathbf{v}(\mathbf{k}) f_{\mathbf{k}}  = -2e \int \frac{d\mathbf{k}}{(2\pi)^3} \mathbf{v}(\mathbf{k}) \varphi_{\mathbf{k}}^{(b)} \frac{\partial f_{\mathbf{k}}^0 (\varepsilon_\mathbf{k})}{\partial \varepsilon_\mathbf{k}} 
+\end{equation}
+Substituting the value of $\varphi_{\mathbf{k}}^{(b)}$, we get
+\begin{equation}
+	\mathbf{J} = -2e^2 \int \frac{d\mathbf{k}}{(2\pi)^3} \mathbf{v}(\mathbf{k}) (\mathbf{E} \cdot \mathbf{v}(\mathbf{k}))\tau(\mathbf{k}) \frac{\partial f_{\mathbf{k}}^0 (\varepsilon_\mathbf{k})}{\partial \varepsilon_\mathbf{k}}.
+\end{equation}
+Using the Ohm's law 
+\begin{equation}
+	\begin{pmatrix}
+		J_x \\ J_y\\ J_z
+	\end{pmatrix} =
+	\begin{pmatrix}
+		\sigma_{xx} & \sigma_{xy} & \sigma_{xz}\\
+		\sigma_{yx} & \sigma_{yy} & \sigma_{yz}\\
+		\sigma_{zx} & \sigma_{zy} & \sigma_{zz}\\
+	\end{pmatrix} \begin{pmatrix}
+		E_x \\ E_y\\ E_z
+	\end{pmatrix},
+\end{equation}
+we get
+\begin{equation}
+	\sigma_{ij} = -2e^2 \int \frac{d\mathbf{k}}{(2\pi)^3} v_i(\mathbf{k}) v_j(\mathbf{k}) 
+	\tau(\mathbf{k}) \frac{\partial f_{\mathbf{k}}^0 (\varepsilon_\mathbf{k})}{\partial \varepsilon_\mathbf{k}} 
+\end{equation}
+The negative gradient of the distribution function acts as a delta function (as $k_BT \ll \mu$) at low temperatures
+\begin{equation}
+	\sigma_{ij} = 2e^2 \int \frac{d\mathbf{k}}{(2\pi)^3} v_i(\mathbf{k}) v_j(\mathbf{k}) 
+	\tau(\mathbf{k}) \delta(\varepsilon_\mathbf{k} -\mu) \label{Eqn:Cond}
+\end{equation}
+The \textbf{transport lifetime} $\tau_{tr}$ is given as
+\begin{equation}
+	\frac{1}{\tau_{tr}}= \frac{1}{\tau (\varepsilon_\mathbf{k} = \mu)} = \int \frac{d\mathbf{k'}}{(2\pi)^3} \mathcal{W}_{\mathbf{k'},\mathbf{k}}^{(bb)} (1 - \hat{k'} \cdot \hat{k}  ) \label{Eqn:transport_lifetime}
+\end{equation}
+
+
+
+
+
+\subsection{Electron-Phonon scattering}
+The transition rate for electron-phonon scattering problem can be found by taking the phonons to be in thermal equilibrium at temperature T. The expression for   $W_{\mathbf{k},\mathbf{k'}}^{(bb)}$ can be written as
+
+	\begin{equation}
+		W_{\mathbf{k},\mathbf{k'}}^{(bb)} = 2\pi |{\mathcal{G}_{\mathbf{k},\mathbf{k}'}^{(bbl)}}|^2 \bigg{\{} n_B(\Omega_\mathbf{q} ^{(l)})  \delta (\varepsilon_\mathbf{k'} ^{(b)} - \varepsilon_\mathbf{k} ^{(b)}- \Omega_\mathbf{q} ^{(l)}) + [n_B(\Omega_\mathbf{q} ^{(l)}) + 1] \delta (\varepsilon_\mathbf{k'} ^{(b)} - \varepsilon_\mathbf{k} ^{(b)}+ \Omega_\mathbf{q} ^{(l)}) \bigg{\}},   \label{Eqn:e-ph-scattering-W}
+	\end{equation} 
+with ${\bf q} = {\bf k}' - {\bf k}$ and the bulk-bulk amplitudes ${\mathcal{G}_{\mathbf{k},\mathbf{k}'}^{(bbl)}}$ given as
+\begin{equation}
+	{\mathcal{G}_{\mathbf{k},\mathbf{k}'}^{(bbl)}} = i \frac{g_0 \sqrt{\Omega_\mathbf{q} ^{{(l)}}}}{c_l \sqrt{2\rho_M}} \langle u_{\mathbf{k'}} | u_{\mathbf{k}} \rangle . \label{Eqn:scattering_matrix2}
+\end{equation}
+
+
+Here $n_B(\Omega)$ is the Bose-Einstein function with zero chemical potential. 
+
+	\begin{equation}
+		\mathcal{W}_{\mathbf{k',k}}^{(bb)} = 2\pi |\mathcal{G}_{\mathbf{k',k}} ^{(bbl)}|^2 \bigg{\{} [n_B(\Omega_\mathbf{q} ^{(l)}) + n_F(\varepsilon_{\mathbf{k}} ^{(b)} + \Omega_\mathbf{q} ^{(l)})] \delta (\varepsilon_\mathbf{k'} ^{(b)} - \varepsilon_\mathbf{k} ^{(b)}- \Omega_\mathbf{q} ^{(l)}) + [n_B(\Omega_\mathbf{q} ^{(l)}) + 1- n_F(\varepsilon_{\mathbf{k}} ^{(b)} - \Omega_\mathbf{q} ^{(l)})] \delta (\varepsilon_\mathbf{k'} ^{(b)} - \varepsilon_\mathbf{k} ^{(b)}+ \Omega_\mathbf{q} ^{(l)}) \bigg{\}} \label{Eqn:e-ph-scattering-stylishW}
+	\end{equation}
+
+
+	
+\end{document}
