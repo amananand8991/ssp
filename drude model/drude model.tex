@@ -1,0 +1,66 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath}
+
+\title{Drude model}
+\author{Aman Anand}
+\date{September 2023}
+
+\begin{document}
+	
+	\maketitle
+	
+	\section{Introduction}
+	
+	Drude model considers solid as nucleus fixed but free electrons moving. The momentum of an electron is described by
+	\begin{equation}
+		\frac{d\mathbf{p}}{dt} = -\frac{\mathbf{p}}{\tau}+\mathbf{f}(t)
+	\end{equation}
+	
+	\section{Plasmons}
+	We find that this model supports collective excitations of the whole system, which we call plasmon. First we study the behaviour of this system under a time varying electric field of the form $\mathbf{E} = \mathbf{E}(\omega)e^{-i\omega t}$
+. Note a time varying field also creates a time varying magnetic field, but the induced magnetic field is very small because of the factor $v/c$.	
+\begin{equation}
+	\frac{d\mathbf{p}}{dt} = -\frac{\mathbf{p}}{\tau}-e\mathbf{E}(\omega)e^{-i\omega t}
+\end{equation}
+	Take $\mathbf{p} = \mathbf{p}(\omega)e^{-i\omega t}$
+	\begin{equation}
+		\implies -i\omega \mathbf{p}(\omega) = -\frac{\mathbf{p}(\omega)}{\tau}-e\mathbf{E}(\omega)
+	\end{equation}
+	\begin{equation}
+		\mathbf{p}(\omega) = \frac{e\tau\mathbf{E}(\omega)}{i\omega \tau - 1}
+	\end{equation}
+Since, $\mathbf{j} = -ne\mathbf{p}/m$
+\begin{equation}
+	\implies \mathbf{j} (\omega) = \frac{ne^2 \tau}{m}\frac{\mathbf{E}(\omega)}{1-i\omega \tau }
+\end{equation}
+If the space variation of electric field is much larger than the mean free path, then current density at that point satisfies the DC Ohm's law at that point, i.e.,
+\begin{equation}
+	\mathbf{j}(\mathbf{r},\omega) = \sigma(\omega) \mathbf{E}(\mathbf{r},\omega) 
+\end{equation}
+This gives us the frequency dependent conductivity as
+\begin{equation}
+	\sigma(\omega) = \frac{\sigma_0}{1-i\omega \tau }, \quad \sigma_0 = \frac{ne^2 \tau}{m}.
+\end{equation}
+To find the frequency-dependent dielectric constant, we use Maxwell's equations
+\begin{equation}
+	-\nabla^2 \mathbf{E} = \nabla \times (\nabla \times \mathbf{E} ) = \nabla \times \left(-\frac{1}{c}\frac{\partial \mathbf{H}}{\partial  t} \right) = \frac{i\omega}{c} \nabla \times \mathbf{H} = \frac{i\omega}{c} \left(\frac{4\pi}{c}\mathbf{j}+ \frac{1}{c}\frac{\partial \mathbf{E}}{\partial  t} \right)
+\end{equation}
+\begin{equation}
+	\implies -\nabla^2 \mathbf{E} = \frac{i\omega}{c} \left(\frac{4\pi}{c}\sigma(\omega) \mathbf{E} - \frac{i\omega}{c}  \mathbf{E}  \right) = \frac{\omega^2}{c^2} \left(1 + \frac{4\pi i \sigma}{\omega}  \right)\mathbf{E}
+\end{equation}
+This gives us wave equation of the form 
+\begin{equation}
+	-\nabla^2 \mathbf{E} =  \frac{\omega^2}{c^2}\epsilon (\omega)\mathbf{E}, \quad \epsilon(\omega) = \left(1 + \frac{4\pi i \sigma}{\omega}  \right).
+\end{equation}
+In the limit of high-frequency $\omega \tau \gg 1$
+\begin{equation}
+\epsilon(\omega) = 1 - \frac{\omega_p ^2}{\omega^2}, \quad \omega_p ^2 = \frac{4\pi n e^2}{m}.
+\end{equation}
+
+
+
+
+
+
+\end{document}
